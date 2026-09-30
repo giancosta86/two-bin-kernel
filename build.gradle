@@ -1,16 +1,13 @@
 buildscript {
     repositories {
-        maven {
-            url 'https://dl.bintray.com/giancosta86/Hephaestus'
-        }
+        //TODO! Del this!
+        mavenLocal()
 
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:5.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'info.gianlucacosta.aurora:aurora:8.0'
+        classpath 'info.gianlucacosta.aurora:aurora:10.0.0-SNAPSHOT'
 
         classpath 'com.github.maiflai:gradle-scalatest:0.14'
     }
@@ -20,46 +17,28 @@ buildscript {
 apply plugin: 'scala'
 apply plugin: 'maven'
 apply plugin: 'osgi'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.maiflai.scalatest'
 
-apply plugin: 'info.gianlucacosta.moonlicense'
 apply plugin: 'info.gianlucacosta.aurora'
 
 
 group 'info.gianlucacosta.twobinpack'
 archivesBaseName = 'twobinkernel'
-version = '3.0'
+version = '4.0.0-SNAPSHOT'
 
 
 description = 'Scala library for two-dimensional packing'
 
-ext.facebookPage = "https://www.facebook.com/TwoBinPack-234021307010796"
-
 
 dependencies {
-    generatedCompile 'org.scala-lang:scala-library:2.11.8'
-
     compile 'org.scala-lang:scala-library:2.11.8'
 
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
 
-    compile 'info.gianlucacosta.helios:helios-fx:6.1'
+    compile 'info.gianlucacosta.helios:helios-fx:7.0.0-SNAPSHOT'
 
     testCompile 'org.scalatest:scalatest_2.11:2.2.6'
     testRuntime 'org.pegdown:pegdown:1.6.0'
-}
-
-
-
-moonLicense {
-    license = gpl3
-
-    productInfo {
-        productName = 'TwoBinKernel'
-        inceptionYear = 2016
-        copyrightHolder = 'Gianluca Costa'
-    }
 }
 
 
@@ -70,22 +49,5 @@ aurora {
         name = 'Gianluca Costa'
         email = 'gianluca@gianlucacosta.info'
         url = 'http://gianlucacosta.info/'
-    }
-
-    bintray {
-        repo = 'Hephaestus'
-        licenses = ['GPL-3.0']
-        labels = [
-                'two-dimensional',
-                '2D',
-                'packing',
-                'problems',
-                'solutions',
-                'Knapsack',
-                'Strip',
-                'rendering',
-                'library',
-                'Scala'
-        ]
     }
 }
